@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:best_tours_app/assets/constant.dart' as constants;
 
 class MainButton extends StatelessWidget {
   const MainButton({
@@ -20,7 +21,7 @@ class MainButton extends StatelessWidget {
           width: MediaQuery.of(context).size.width - 32,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: const Color(0xFF0D72FF)),
+              color: constants.accentColor),
           child: Center(
               child: Text(
             title,

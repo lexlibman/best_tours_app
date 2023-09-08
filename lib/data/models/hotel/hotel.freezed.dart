@@ -27,9 +27,9 @@ mixin _$Hotel {
   int get minimalPrice => throw _privateConstructorUsedError;
   int get rating => throw _privateConstructorUsedError;
   String get ratingName => throw _privateConstructorUsedError;
-  List<dynamic> get imageUrls => throw _privateConstructorUsedError;
+  List<String> get imageUrls => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  List<dynamic> get peculiarities => throw _privateConstructorUsedError;
+  List<String> get peculiarities => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,9 +49,9 @@ abstract class $HotelCopyWith<$Res> {
       int minimalPrice,
       int rating,
       String ratingName,
-      List<dynamic> imageUrls,
+      List<String> imageUrls,
       String description,
-      List<dynamic> peculiarities});
+      List<String> peculiarities});
 }
 
 /// @nodoc
@@ -110,7 +110,7 @@ class _$HotelCopyWithImpl<$Res, $Val extends Hotel>
       imageUrls: null == imageUrls
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<String>,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -118,7 +118,7 @@ class _$HotelCopyWithImpl<$Res, $Val extends Hotel>
       peculiarities: null == peculiarities
           ? _value.peculiarities
           : peculiarities // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<String>,
     ) as $Val);
   }
 }
@@ -137,9 +137,9 @@ abstract class _$$_HotelCopyWith<$Res> implements $HotelCopyWith<$Res> {
       int minimalPrice,
       int rating,
       String ratingName,
-      List<dynamic> imageUrls,
+      List<String> imageUrls,
       String description,
-      List<dynamic> peculiarities});
+      List<String> peculiarities});
 }
 
 /// @nodoc
@@ -194,7 +194,7 @@ class __$$_HotelCopyWithImpl<$Res> extends _$HotelCopyWithImpl<$Res, _$_Hotel>
       imageUrls: null == imageUrls
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<String>,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -202,7 +202,7 @@ class __$$_HotelCopyWithImpl<$Res> extends _$HotelCopyWithImpl<$Res, _$_Hotel>
       peculiarities: null == peculiarities
           ? _value._peculiarities
           : peculiarities // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<String>,
     ));
   }
 }
@@ -218,9 +218,9 @@ class _$_Hotel implements _Hotel {
       required this.minimalPrice,
       required this.rating,
       required this.ratingName,
-      required final List<dynamic> imageUrls,
+      required final List<String> imageUrls,
       required this.description,
-      required final List<dynamic> peculiarities})
+      required final List<String> peculiarities})
       : _imageUrls = imageUrls,
         _peculiarities = peculiarities;
 
@@ -241,9 +241,9 @@ class _$_Hotel implements _Hotel {
   final int rating;
   @override
   final String ratingName;
-  final List<dynamic> _imageUrls;
+  final List<String> _imageUrls;
   @override
-  List<dynamic> get imageUrls {
+  List<String> get imageUrls {
     if (_imageUrls is EqualUnmodifiableListView) return _imageUrls;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_imageUrls);
@@ -251,9 +251,9 @@ class _$_Hotel implements _Hotel {
 
   @override
   final String description;
-  final List<dynamic> _peculiarities;
+  final List<String> _peculiarities;
   @override
-  List<dynamic> get peculiarities {
+  List<String> get peculiarities {
     if (_peculiarities is EqualUnmodifiableListView) return _peculiarities;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_peculiarities);
@@ -325,9 +325,9 @@ abstract class _Hotel implements Hotel {
       required final int minimalPrice,
       required final int rating,
       required final String ratingName,
-      required final List<dynamic> imageUrls,
+      required final List<String> imageUrls,
       required final String description,
-      required final List<dynamic> peculiarities}) = _$_Hotel;
+      required final List<String> peculiarities}) = _$_Hotel;
 
   factory _Hotel.fromJson(Map<String, dynamic> json) = _$_Hotel.fromJson;
 
@@ -346,11 +346,11 @@ abstract class _Hotel implements Hotel {
   @override
   String get ratingName;
   @override
-  List<dynamic> get imageUrls;
+  List<String> get imageUrls;
   @override
   String get description;
   @override
-  List<dynamic> get peculiarities;
+  List<String> get peculiarities;
   @override
   @JsonKey(ignore: true)
   _$$_HotelCopyWith<_$_Hotel> get copyWith =>

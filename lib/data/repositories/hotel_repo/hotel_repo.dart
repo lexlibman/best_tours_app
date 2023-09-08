@@ -19,10 +19,12 @@ class HotelRepo {
         minimalPrice: hotelJson['minimal_price'],
         rating: hotelJson['rating'],
         ratingName: hotelJson['rating_name'],
-        imageUrls: hotelJson['image_urls'],
+        imageUrls: List<String>.from(hotelJson['image_urls']),
         description: hotelJson['about_the_hotel']['description'],
-        peculiarities: hotelJson['about_the_hotel']['peculiarities'],
+        peculiarities:
+            List<String>.from(hotelJson['about_the_hotel']['peculiarities']),
       );
+
       return hotel;
     } catch (e) {
       throw Exception(e.toString());

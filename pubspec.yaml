@@ -16,7 +16,10 @@ dependencies:
   go_router: ^8.0.3
   carousel_slider: ^4.2.1
   flutter_svg: ^2.0.7
-  marquee: ^2.2.3
+  mask_text_input_formatter: ^2.5.0
+  intl: ^0.18.0
+
+  flutter_form_bloc: ^0.31.0
 
 
 dev_dependencies:

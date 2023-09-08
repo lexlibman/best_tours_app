@@ -17,8 +17,8 @@ class RoomRepo {
                 name: room['name'],
                 price: room['price'],
                 pricePer: room['price_per'],
-                peculiarities: room['peculiarities'],
-                imageUrls: room['image_urls'],
+                peculiarities: List<String>.from(room['peculiarities']),
+                imageUrls: List<String>.from(room['image_urls']),
               ))
           .toList();
 

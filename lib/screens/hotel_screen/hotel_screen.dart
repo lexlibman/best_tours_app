@@ -1,3 +1,4 @@
+import 'package:best_tours_app/assets/constant.dart' as constants;
 import 'package:best_tours_app/blocs/hotel_bloc/hotel_bloc.dart';
 import 'package:best_tours_app/blocs/room_bloc/room_bloc.dart';
 import 'package:best_tours_app/data/repositories/room_repo/room_repo.dart';
@@ -6,8 +7,7 @@ import 'package:best_tours_app/screens/room_selection_screen/room_selection_scre
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../data/models/hotel/hotel.dart';
-import '../widgets/main_button.dart';
+import '../widgets/bottom_bar.dart';
 import '../widgets/hotel_card.dart';
 
 class HotelScreen extends StatefulWidget {
@@ -18,15 +18,15 @@ class HotelScreen extends StatefulWidget {
 }
 
 class _HotelScreenState extends State<HotelScreen> {
-  late final Hotel hotel;
   final roomRepo = RoomRepo();
   @override
   Widget build(BuildContext context) {
+    var hotelName = 'Выбор номера';
     final bloc = context.watch<HotelBloc>();
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F6F9),
+      backgroundColor: constants.scaffoldBackground,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: constants.mainContainerColor,
         elevation: 0,
         title: const Text(
           'Отель',
@@ -38,14 +38,18 @@ class _HotelScreenState extends State<HotelScreen> {
           bloc.add(const HotelEvent.fetch());
           return const Center(child: CircularProgressIndicator());
         },
-        loaded: (hotelLoaded) {
-          hotel = hotelLoaded;
+        loaded: (hotel) {
+          hotelName = hotel.name;
           return ListView(
             children: [
               HotelCard(
-                hotel: hotel,
-                showImages: true,
-                showPrice: true,
+                rating: hotel.rating,
+                ratingName: hotel.ratingName,
+                hotelName: hotel.name,
+                hotelAdress: hotel.adress,
+                imageUrls: hotel.imageUrls,
+                hotelMinimalPrice: hotel.minimalPrice,
+                hotelPriceForIt: hotel.priceForIt,
               ),
               const SizedBox(height: 8),
               AboutHotelCard(hotel: hotel),
@@ -54,39 +58,18 @@ class _HotelScreenState extends State<HotelScreen> {
         },
         error: () => const Text('Отсутствует подключение к сети интернет'),
       ),
-      bottomNavigationBar: SizedBox(
-        height: 100,
-        child: Column(
-          children: [
-            Container(
-              height: 1,
-              width: MediaQuery.of(context).size.width,
-              color: const Color(0xFFE8E9EC),
-            ),
-            Container(
-              width: double.infinity,
-              decoration: const BoxDecoration(color: Colors.white),
-              child: Column(
-                children: [
-                  const SizedBox(height: 15),
-                  MainButton(
-                    title: 'К выбору номера',
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => BlocProvider(
-                          create: (context) => RoomBloc(roomRepo: roomRepo),
-                          child: RoomSelectionScreen(
-                            hotel: hotel,
-                          ),
-                        ),
-                      ));
-                    },
-                  ),
-                ],
+      bottomNavigationBar: BottomBar(
+        title: 'К выбору номера',
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => BlocProvider(
+              create: (context) => RoomBloc(roomRepo: roomRepo),
+              child: RoomSelectionScreen(
+                hotelName: hotelName,
               ),
             ),
-          ],
-        ),
+          ));
+        },
       ),
     );
   }

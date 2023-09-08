@@ -11,8 +11,11 @@ _$_Room _$$_RoomFromJson(Map<String, dynamic> json) => _$_Room(
       name: json['name'] as String,
       price: json['price'] as int,
       pricePer: json['pricePer'] as String,
-      imageUrls: json['imageUrls'] as List<dynamic>,
-      peculiarities: json['peculiarities'] as List<dynamic>,
+      imageUrls:
+          (json['imageUrls'] as List<dynamic>).map((e) => e as String).toList(),
+      peculiarities: (json['peculiarities'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_RoomToJson(_$_Room instance) => <String, dynamic>{

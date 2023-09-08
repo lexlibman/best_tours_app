@@ -24,8 +24,8 @@ mixin _$Room {
   String get name => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String get pricePer => throw _privateConstructorUsedError;
-  List<dynamic> get imageUrls => throw _privateConstructorUsedError;
-  List<dynamic> get peculiarities => throw _privateConstructorUsedError;
+  List<String> get imageUrls => throw _privateConstructorUsedError;
+  List<String> get peculiarities => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,8 +42,8 @@ abstract class $RoomCopyWith<$Res> {
       String name,
       int price,
       String pricePer,
-      List<dynamic> imageUrls,
-      List<dynamic> peculiarities});
+      List<String> imageUrls,
+      List<String> peculiarities});
 }
 
 /// @nodoc
@@ -86,11 +86,11 @@ class _$RoomCopyWithImpl<$Res, $Val extends Room>
       imageUrls: null == imageUrls
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<String>,
       peculiarities: null == peculiarities
           ? _value.peculiarities
           : peculiarities // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<String>,
     ) as $Val);
   }
 }
@@ -106,8 +106,8 @@ abstract class _$$_RoomCopyWith<$Res> implements $RoomCopyWith<$Res> {
       String name,
       int price,
       String pricePer,
-      List<dynamic> imageUrls,
-      List<dynamic> peculiarities});
+      List<String> imageUrls,
+      List<String> peculiarities});
 }
 
 /// @nodoc
@@ -146,11 +146,11 @@ class __$$_RoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res, _$_Room>
       imageUrls: null == imageUrls
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<String>,
       peculiarities: null == peculiarities
           ? _value._peculiarities
           : peculiarities // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<String>,
     ));
   }
 }
@@ -163,8 +163,8 @@ class _$_Room implements _Room {
       required this.name,
       required this.price,
       required this.pricePer,
-      required final List<dynamic> imageUrls,
-      required final List<dynamic> peculiarities})
+      required final List<String> imageUrls,
+      required final List<String> peculiarities})
       : _imageUrls = imageUrls,
         _peculiarities = peculiarities;
 
@@ -178,17 +178,17 @@ class _$_Room implements _Room {
   final int price;
   @override
   final String pricePer;
-  final List<dynamic> _imageUrls;
+  final List<String> _imageUrls;
   @override
-  List<dynamic> get imageUrls {
+  List<String> get imageUrls {
     if (_imageUrls is EqualUnmodifiableListView) return _imageUrls;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_imageUrls);
   }
 
-  final List<dynamic> _peculiarities;
+  final List<String> _peculiarities;
   @override
-  List<dynamic> get peculiarities {
+  List<String> get peculiarities {
     if (_peculiarities is EqualUnmodifiableListView) return _peculiarities;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_peculiarities);
@@ -246,8 +246,8 @@ abstract class _Room implements Room {
       required final String name,
       required final int price,
       required final String pricePer,
-      required final List<dynamic> imageUrls,
-      required final List<dynamic> peculiarities}) = _$_Room;
+      required final List<String> imageUrls,
+      required final List<String> peculiarities}) = _$_Room;
 
   factory _Room.fromJson(Map<String, dynamic> json) = _$_Room.fromJson;
 
@@ -260,9 +260,9 @@ abstract class _Room implements Room {
   @override
   String get pricePer;
   @override
-  List<dynamic> get imageUrls;
+  List<String> get imageUrls;
   @override
-  List<dynamic> get peculiarities;
+  List<String> get peculiarities;
   @override
   @JsonKey(ignore: true)
   _$$_RoomCopyWith<_$_Room> get copyWith => throw _privateConstructorUsedError;

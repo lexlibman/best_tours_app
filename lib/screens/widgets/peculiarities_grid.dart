@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:best_tours_app/assets/constant.dart' as constants;
 
 class PeculiaritiesGrid extends StatelessWidget {
   final List peculiarities;
@@ -14,13 +15,13 @@ class PeculiaritiesGrid extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
           decoration: BoxDecoration(
-            color: const Color(0xFFFBFBFC),
+            color: constants.pecuBackgroundColor,
             borderRadius: BorderRadius.circular(5),
           ),
           child: Text(
             item,
             style: const TextStyle(
-              color: Color(0xFF828796),
+              color: constants.pecuTextColor,
               fontWeight: FontWeight.w500,
             ),
           ),

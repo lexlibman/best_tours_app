@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:best_tours_app/assets/constant.dart' as constants;
 
 class AboutRoomButton extends StatelessWidget {
   const AboutRoomButton({super.key});
@@ -9,7 +10,7 @@ class AboutRoomButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          color: const Color(0x190D72FF),
+          color: constants.accentColor.withOpacity(0.10),
         ),
         child: const Padding(
           padding: EdgeInsets.only(left: 10, top: 5, bottom: 5, right: 5),
@@ -20,7 +21,7 @@ class AboutRoomButton extends StatelessWidget {
                 'Подробнее о номере ',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color(0xFF0D72FF),
+                  color: constants.accentColor,
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                   height: 1.20,
@@ -28,7 +29,7 @@ class AboutRoomButton extends StatelessWidget {
               ),
               Icon(
                 Icons.arrow_forward_ios_rounded,
-                color: Color(0xFF0D72FF),
+                color: constants.accentColor,
                 size: 20,
               )
             ],

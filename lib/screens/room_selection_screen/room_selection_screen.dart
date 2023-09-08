@@ -2,26 +2,28 @@ import 'package:best_tours_app/blocs/room_bloc/room_bloc.dart';
 import 'package:best_tours_app/screens/room_selection_screen/widgets/room_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../data/models/hotel/hotel.dart';
+import 'package:best_tours_app/assets/constant.dart' as constants;
 
 class RoomSelectionScreen extends StatelessWidget {
-  const RoomSelectionScreen({super.key, required this.hotel});
+  const RoomSelectionScreen({
+    super.key,
+    required this.hotelName,
+  });
 
-  final Hotel hotel;
+  final String hotelName;
 
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<RoomBloc>();
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F6F9),
+      backgroundColor: constants.scaffoldBackground,
       appBar: AppBar(
         leading: const BackButton(color: Colors.black),
-        backgroundColor: Colors.white,
+        backgroundColor: constants.mainContainerColor,
         elevation: 0,
         title: Text(
-          hotel.name,
-          style: const TextStyle(color: Colors.black, fontSize: 18),
+          hotelName,
+          style: constants.appBarTitleStyle,
         ),
       ),
       body: bloc.state.when(
@@ -37,7 +39,6 @@ class RoomSelectionScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 child: RoomCard(
                   room: roomsLoaded[index],
-                  hotel: hotel,
                 ),
               );
             },

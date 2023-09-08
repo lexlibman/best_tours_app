@@ -13,9 +13,9 @@ class Hotel with _$Hotel {
     required int minimalPrice,
     required int rating,
     required String ratingName,
-    required List imageUrls,
+    required List<String> imageUrls,
     required String description,
-    required List peculiarities,
+    required List<String> peculiarities,
   }) = _Hotel;
 
   factory Hotel.fromJson(dynamic json) => _$HotelFromJson(json);

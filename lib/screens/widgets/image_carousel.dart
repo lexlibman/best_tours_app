@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ImageCarousel extends StatefulWidget {
   const ImageCarousel({super.key, required this.imageUrls});
 
-  final List imageUrls;
+  final List? imageUrls;
 
   @override
   State<ImageCarousel> createState() => _ImageCarouselState();
@@ -22,7 +22,7 @@ class _ImageCarouselState extends State<ImageCarousel> {
           borderRadius: BorderRadius.circular(15),
           child: CarouselSlider(
             carouselController: _carouselController,
-            items: widget.imageUrls.map((imageUrl) {
+            items: widget.imageUrls?.map((imageUrl) {
               return Builder(builder: (BuildContext context) {
                 return Image.network(
                   imageUrl,

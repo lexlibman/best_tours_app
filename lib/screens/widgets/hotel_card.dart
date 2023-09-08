@@ -1,28 +1,36 @@
 import 'package:flutter/material.dart';
 
-import '../../data/models/hotel/hotel.dart';
 import 'image_carousel.dart';
 import 'rating_lable.dart';
+import 'package:best_tours_app/assets/constant.dart' as constants;
 
 class HotelCard extends StatelessWidget {
   const HotelCard({
     super.key,
-    required this.hotel,
-    required this.showImages,
-    required this.showPrice,
+    this.imageUrls,
+    required this.rating,
+    required this.ratingName,
+    required this.hotelName,
+    required this.hotelAdress,
+    this.hotelMinimalPrice,
+    this.hotelPriceForIt,
   });
 
-  final Hotel hotel;
-  final bool showImages;
-  final bool showPrice;
+  final List<String>? imageUrls;
+  final int rating;
+  final String ratingName;
+  final String hotelName;
+  final String hotelAdress;
+  final int? hotelMinimalPrice;
+  final String? hotelPriceForIt;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: showImages
+        color: constants.mainContainerColor,
+        borderRadius: imageUrls != null
             ? const BorderRadius.vertical(
                 bottom: Radius.circular(12),
               )
@@ -31,24 +39,21 @@ class HotelCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          showImages
-              ? ImageCarousel(imageUrls: hotel.imageUrls)
+          imageUrls != null
+              ? ImageCarousel(imageUrls: imageUrls)
               : const SizedBox(),
           Padding(
             padding: const EdgeInsets.only(top: 16.0),
             child: RatingLabel(
-              rating: hotel.rating,
-              ratingName: hotel.ratingName,
+              rating: rating,
+              ratingName: ratingName,
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
-              hotel.name,
-              style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
-              ),
+              hotelName,
+              style: constants.headlineMedium,
             ),
           ),
           Padding(
@@ -56,35 +61,27 @@ class HotelCard extends StatelessWidget {
             child: GestureDetector(
               onTap: () {},
               child: Text(
-                hotel.adress,
+                hotelAdress,
                 style: const TextStyle(
-                  color: Color(0xFF0D72FF),
+                  color: constants.accentColor,
                   fontWeight: FontWeight.w500,
                 ),
               ),
             ),
           ),
-          showPrice
+          hotelMinimalPrice != null && hotelPriceForIt != null
               ? Padding(
                   padding: const EdgeInsets.only(bottom: 16),
                   child: RichText(
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: 'от ${hotel.minimalPrice} ₽ ',
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          text: 'от $hotelMinimalPrice ₽ ',
+                          style: constants.headlineLarge,
                         ),
                         TextSpan(
-                          text: ' ${hotel.priceForIt}',
-                          style: const TextStyle(
-                            color: Color(0xFF828796),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                          ),
+                          text: ' $hotelPriceForIt',
+                          style: constants.headlineSmall,
                         )
                       ],
                     ),

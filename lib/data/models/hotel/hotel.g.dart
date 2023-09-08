@@ -14,9 +14,12 @@ _$_Hotel _$$_HotelFromJson(Map<String, dynamic> json) => _$_Hotel(
       minimalPrice: json['minimalPrice'] as int,
       rating: json['rating'] as int,
       ratingName: json['ratingName'] as String,
-      imageUrls: json['imageUrls'] as List<dynamic>,
+      imageUrls:
+          (json['imageUrls'] as List<dynamic>).map((e) => e as String).toList(),
       description: json['description'] as String,
-      peculiarities: json['peculiarities'] as List<dynamic>,
+      peculiarities: (json['peculiarities'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_HotelToJson(_$_Hotel instance) => <String, dynamic>{

@@ -1,27 +1,31 @@
+import 'package:best_tours_app/blocs/reservation_bloc/reservation_bloc.dart';
+import 'package:best_tours_app/data/repositories/reservation_repo/reservation_repo.dart';
 import 'package:best_tours_app/screens/widgets/image_carousel.dart';
 import 'package:best_tours_app/screens/widgets/main_button.dart';
+import 'package:best_tours_app/screens/widgets/main_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/models/hotel/hotel.dart';
 import '../../../data/models/room/room.dart';
+import '../../reservation_screen/reservation_form_bloc/reservation_form_bloc.dart';
 import '../../reservation_screen/reservation_screen.dart';
 import '../../widgets/peculiarities_grid.dart';
 import 'about_room_button.dart';
+import 'package:best_tours_app/assets/constant.dart' as constants;
 
 class RoomCard extends StatelessWidget {
-  const RoomCard({super.key, required this.room, required this.hotel});
+  RoomCard({
+    super.key,
+    required this.room,
+  });
   final Room room;
-  final Hotel hotel;
+
+  final reservationRepo = ReservationRepo();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
+    return MainContainer(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -30,10 +34,7 @@ class RoomCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
               room.name,
-              style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w500,
-              ),
+              style: constants.headlineMedium,
             ),
           ),
           PeculiaritiesGrid(peculiarities: room.peculiarities),
@@ -48,19 +49,11 @@ class RoomCard extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: '${room.price} ₽ ',
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 30,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: constants.headlineLarge,
                   ),
                   TextSpan(
                     text: ' ${room.pricePer}',
-                    style: const TextStyle(
-                      color: Color(0xFF828796),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    style: constants.headlineSmall,
                   ),
                 ],
               ),
@@ -70,9 +63,17 @@ class RoomCard extends StatelessWidget {
               title: 'Выбрать номер',
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => ReservationScreen(
-                    hotel: hotel,
-                    room: room,
+                  builder: (context) => MultiBlocProvider(
+                    providers: [
+                      BlocProvider(
+                        create: (context) =>
+                            ReservationBloc(reservationRepo: reservationRepo),
+                      ),
+                      BlocProvider(
+                        create: (context) => ReservationFormBloc(),
+                      ),
+                    ],
+                    child: const ReservationScreen(),
                   ),
                 ));
               })

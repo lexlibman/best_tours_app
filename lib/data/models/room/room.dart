@@ -10,8 +10,8 @@ class Room with _$Room {
     required String name,
     required int price,
     required String pricePer,
-    required List imageUrls,
-    required List peculiarities,
+    required List<String> imageUrls,
+    required List<String> peculiarities,
   }) = _Room;
 
   factory Room.fromJson(dynamic json) => _$RoomFromJson(json);
